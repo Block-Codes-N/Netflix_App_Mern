@@ -3,13 +3,20 @@ import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { productRows } from "../../dummyData";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { MovieContext } from "../../context/moviesContext/MovieContext";
+import { getMovies } from "../../context/moviesContext/MovieApiCalls";
 
 export default function ProductList() {
-  const [data, setData] = useState(productRows);
+  const {movies, dispatch} = useContext(MovieContext)
+
+  useEffect(() =>{
+    getMovies(dispatch)
+  }, [dispatch]);
+  console.log(movies)
 
   const handleDelete = (id) => {
-    setData(data.filter((item) => item.id !== id));
+    // setData(data.filter((item) => item.id !== id));
   };
 
   const columns = [
@@ -60,13 +67,13 @@ export default function ProductList() {
 
   return (
     <div className="productList">
-      <DataGrid
+      {/* <DataGrid
         rows={data}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
         checkboxSelection
-      />
+      /> */}
     </div>
   );
 }

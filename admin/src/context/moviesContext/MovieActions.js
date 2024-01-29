@@ -1,12 +1,13 @@
-export const getMoviesStart = () =>({
-    type: "Get Movies Start",
-});
-
-export const getMoviesSuccess = () =>({
-    type: "Get Movies Success",
+export const getMoviesStart = () => ({
+    type: "GET_MOVIES_START",
+  });
+  
+  export const getMoviesSuccess = (movies) => ({
+    type: "GET_MOVIES_SUCCESS",
     payload: movies,
-});
-
-export const getMoviesFailure = () =>({
-    type: "Get Movies Failure",
-});
+  });
+  
+  export const getMoviesFailure = () => ({
+    type: "GET_MOVIES_FAILURE",
+  });
+  
