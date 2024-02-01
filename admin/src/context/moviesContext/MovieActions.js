@@ -1,3 +1,5 @@
+
+//Get the movies
 export const getMoviesStart = () =>({
   type: "Get Movies Start",
 });
@@ -11,6 +13,38 @@ export const getMoviesFailure = () =>({
   type: "Get Movies Failure",
 });
 
+
+//Create a movie
+export const createMovieStart = () =>({
+  type: "Create Movie Start",
+});
+
+export const createMovieSuccess = (movie) =>({
+  type: "Create Movie Success",
+  payload: movie,
+});
+
+export const createMovieFailure = () =>({
+  type: "Create Movie Failure",
+});
+
+
+//Update a movie
+export const updateMovieStart = () =>({
+  type: "Update Movie Start",
+});
+
+export const updateMovieSuccess = (movie) =>({
+  type: "Update Movie Success",
+  payload: movie,
+});
+
+export const updateMovieFailure = () =>({
+  type: "Update Movie Failure",
+});
+
+
+//Delete a movie
 export const deleteMovieStart = () =>({
   type: "Delete Movie Start",
 });

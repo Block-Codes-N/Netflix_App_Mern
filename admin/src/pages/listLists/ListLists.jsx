@@ -1,43 +1,28 @@
-import "./productList.css";
+import "./listLists.css";
 import { DataGrid } from "@material-ui/data-grid";
 import { DeleteOutline } from "@material-ui/icons";
 import { Link } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
-import { MovieContext } from "../../context/moviesContext/MovieContext";
-import { deleteMovie, getMovies } from "../../context/moviesContext/MovieApiCalls";
+import { useContext, useEffect } from "react";
+import { getLists } from "../../context/listContext/ListApiCalls";
 
-export default function ProductList() {
-  const { movies, dispatch } = useContext(MovieContext)
+import { ListContext } from "../../context/listContext/ListContext";
+
+export default function ListLists() {
+  const { lists, dispatch } = useContext(ListContext)
 
   useEffect(() => {
-    getMovies(dispatch)
+    getLists(dispatch)
   }, [dispatch]);
-  
+
   const handleDelete = (id) => {
-    deleteMovie(id, dispatch);
-    // setData(data.filter((item) => item.id !== id));
+
   };
 
   const columns = [
     { field: "_id", headerName: "ID", width: 90 },
-    {
-      field: "movie",
-      headerName: "Movie",
-      width: 200,
-      renderCell: (params) => {
-        return (
-          <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.title}
-          </div>
-        );
-      },
-    },
+    { field: "title", headerName: "Title", width: 120 },
     { field: "genre", headerName: "Genre", width: 120 },
-    { field: "year", headerName: "year", width: 120 },
-    { field: "limit", headerName: "Limit", width: 120 },
-    { field: "isSeries", headerName: "IsSeries", width: 120 },
-
+    { field: "type", headerName: "Type", width: 120 },
     {
       field: "action",
       headerName: "Action",
@@ -64,8 +49,7 @@ export default function ProductList() {
   return (
     <div className="productList">
       <DataGrid
-        // rows={movies}
-        rows={movies}
+        rows={lists}
         disableSelectionOnClick
         columns={columns}
         pageSize={8}
